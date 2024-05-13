@@ -3,6 +3,7 @@ package roomescape.global.exception;
 import org.springframework.http.HttpStatus;
 
 public enum ExceptionType {
+    INVALID_QUERY_PARAMETER(HttpStatus.BAD_REQUEST, "유효하지 않은 쿼리 파라미터입니다."),
     NO_COOKIE_EXIST(HttpStatus.BAD_REQUEST, "쿠키가 존재하지 않습니다."),
     NO_TOKEN_EXIST(HttpStatus.BAD_REQUEST, "쿠키에 토큰이 존재하지 않습니다."),
     FORBIDDEN(HttpStatus.FORBIDDEN, "권한이 없습니다."),

@@ -4,7 +4,6 @@ import jakarta.validation.Valid;
 import java.net.URI;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Map;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,6 +19,7 @@ import roomescape.dto.auth.LoginInfo;
 import roomescape.dto.reservation.request.UserReservationRequest;
 import roomescape.dto.reservation.response.ReservationAvailableTimeResponse;
 import roomescape.dto.reservation.response.ReservationResponse;
+import roomescape.repository.dynamic.ReservationFilterConditions;
 import roomescape.service.ReservationService;
 
 @RestController
@@ -34,7 +34,7 @@ public class ReservationController {
 
     @GetMapping
     public ResponseEntity<List<ReservationResponse>> readReservations(
-            @RequestParam Map<String, String> filterConditions) {
+            ReservationFilterConditions filterConditions) {
         return ResponseEntity.ok(reservationService.findReservationsByCondition(filterConditions));
     }
 
